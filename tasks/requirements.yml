@@ -1,0 +1,11 @@
+---
+# tasks to check rke2 requirements about systems, hardware, network ...
+
+- name: Check nodes name
+
+- name: Check operating systems
+
+- name: Check hardware requirements # min : 4GB ram, 2 CPU ; recom: 8GB ram, 4 CPU
+
+- name: Check inbound network rules
+
