@@ -1,2 +1,128 @@
 ---
 # defaults file for rke2
+
+## Operating systems compatible with rke2
+rke2_operation_systems:
+  - name: Ubuntu
+    version:
+      - "18.04"
+      - "20.04"
+      - "22.04"
+  - name: CentOS
+    version:
+      - "7.8"
+  - name: Rocky
+    version:
+      - "8.5"
+      - "9.0"
+  - name: OpenSUSE
+    version:
+      - "5.1"
+      - "5.2"
+      - "5.3"
+
+## Inbound Network rules for rke2
+rke2_network_rules:
+  kubernetes_api:
+    - protocol: TCP
+      node: all
+      ports:
+        - 9345
+        - 6443
+      enabled: true
+      description: "Kubernetes api, traffic from rke2 agent nodes"
+  flannel_vxlan:
+    - protocol: UDP
+      node: all
+      ports:
+        - 8472
+      enabled: false
+      description: "Required for Flannel VXLAN, traffic from rke2 server and agent nodes"
+  kubelet:
+    - protocol: TCP
+      node: all
+      ports:
+        - 10250
+      enabled: true
+      description: "kubelet, traffic from rke2 server and agent nodes"
+  etcd:
+    - protocol: TCP
+      node: server
+      ports:
+        - 2379
+        - 2380
+      enabled: true
+      description: "etcd client and peer ports, traffic from rke2 server nodes"
+  cilium_cni_vxlan:
+    - protocol: UDP
+      node: all
+      ports:
+        - 8472
+      enabled: false
+      description: "Cilium CNI VXLAN, traffic from rke2 server and agent nodes"
+  cilium_cni_health_checks:
+    - protocol: TCP
+      node: all
+      ports:
+        - 4240
+      enabled: false
+      description: "Cilium CNI health checks, traffic from rke2 server and agent nodes"
+  calico_cni_bgp:
+    protocol: TCP
+    node: all
+    ports:
+      - 179
+    enabled: false
+    description: "Calico CNI with BGP, traffic from rke2 server and agent nodes"
+  calico_cni_vxlan:
+    protocol: UDP
+    node: all
+    ports:
+      - 4789
+    enabled: false
+    description: "Calico CNI with VXLAN, traffic from rke2 server and agent nodes"
+  calico_cni_typha:
+    protocol: TCP
+    node: all
+    ports:
+      - 5473
+    enabled: false
+    description: "Calico CNI with Typha, traffic from rke2 server and agent nodes"
+  calico_health_checks:
+    protocol: TCP
+    node: all
+    ports:
+      - 9098
+      - 9099
+    enabled: false
+    description: "Calico and Calico with Typha health checks"
+  calico_cni_typha:
+    protocol: TCP
+    node: all
+    ports:
+      - 5473
+    enabled: false
+    description: "Calico CNI with Typha, traffic from rke2 server and agent nodes"
+  canal_cni_vxlan:
+    protocol: UDP
+    node: all
+    ports:
+      - 8472
+    enabled: false
+    description: "Canal CNI VXLAN, traffic from rke2 server and agent nodes"
+  canal_cni_health_checks:
+    protocol: TCP
+    node: all
+    ports:
+      - 9099
+    enabled: false
+  canal_cni_wireguard:
+    protocol: UDP
+    node: all
+    ports:
+      - 51820
+      - 51821
+    enabled: false
+    description: "Canal CNI with WireGuard IPV4 and IPV6/dual-stack"
+
+      

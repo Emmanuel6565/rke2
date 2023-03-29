@@ -1,7 +1,7 @@
 ---
 # tasks to check rke2 requirements about systems, hardware, network ...
 
-- name: Check nodes name
+- name: Ensure all nodes have differents hostname from each others
 
 - name: Check operating systems
 
