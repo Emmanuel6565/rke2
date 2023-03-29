@@ -22,7 +22,7 @@ rke2_operating_systems:
       - "5.3"
 
 ## Inbound Network rules for rke2
-rke2_network_rules:
+rke2_inbound_network:
   kubernetes_api:
     - protocol: TCP
       node: all
