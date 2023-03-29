@@ -2,7 +2,7 @@
 # defaults file for rke2
 
 ## Operating systems compatible with rke2
-rke2_operation_systems:
+rke2_operating_systems:
   - name: Ubuntu
     version:
       - "18.04"
