@@ -96,13 +96,6 @@ rke2_inbound_network:
       - 9099
     enabled: false
     description: "Calico and Calico with Typha health checks"
-  calico_cni_typha:
-    protocol: TCP
-    node: all
-    ports:
-      - 5473
-    enabled: false
-    description: "Calico CNI with Typha, traffic from rke2 server and agent nodes"
   canal_cni_vxlan:
     protocol: UDP
     node: all

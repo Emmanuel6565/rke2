@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: workers
+  remote_user: ubuntu
   roles:
     - rke2
